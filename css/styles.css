@@ -34,9 +34,10 @@ body {
 
 
 #game-board-div {
-    /* background-color: rgb(190, 190, 190); */
+    background-color: rgb(29, 29, 29);
     width: fit-content;
     padding: .5rem;
+    border-radius: 10px;
 }
 
 #game-board-div:hover {
@@ -68,5 +69,9 @@ body {
     top: -15px;
     left: -3px;
     font-size: .7rem;
+}
+
+.virus {
+    background-color: salmon;
 }
 

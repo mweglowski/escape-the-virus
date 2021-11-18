@@ -21,6 +21,17 @@ class Game {
         this.createPlayer()
 
         // start the spread of virus
+        this.spreadVirus()
+    }
+
+    // Spread the virus
+    async spreadVirus() {
+        // first virus coordinates
+        let x = 29
+        let y = 0
+
+        // update spaces, changing this.virus in each Space that has been infected
+        // if player 
     }
 
     // Check if player reached the target
@@ -37,7 +48,7 @@ class Game {
 
         const [x, y] = [this.board.playerStartPosition.x, this.board.playerStartPosition.y]
 
-        const newPlayer = new Player(this.playerUsername, x, y, this.board.spaces)
+        const newPlayer = new Player(this.playerUsername, x, y)
 
         newPlayer.drawPlayerSquare()
 

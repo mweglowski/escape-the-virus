@@ -1,10 +1,10 @@
 class Player {
-    constructor(playerUsername, columnLocation, rowLocation, spaces) {
+    constructor(playerUsername, columnLocation, rowLocation) {
         this.playerUsername = playerUsername
         this.id = `player-${playerUsername}`
         this.columnLocation = columnLocation
         this.rowLocation = rowLocation
-        this.spaces = spaces
+        this.spaces = game.board.spaces
         this.squareLength = 15
     }
 

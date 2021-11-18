@@ -11,3 +11,5 @@ window.addEventListener('keydown', (e) => {
     game.handleKeydown(e)
     console.log(e.key)
 })
+
+
