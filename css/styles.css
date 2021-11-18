@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quantico', sans-serif;
+}
+
+body {
+    background-color: rgb(42, 42, 42);
+    display: flex;
+}
+
+#start-game-btn {
+    border: none;
+    margin: auto;
+    margin-top: 20vh;
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    background-color: rgb(255, 233, 23);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem 0 rgb(172, 157, 24);
+    transition: .3s;
+}
+
+#start-game-btn:hover {
+    background-color: rgb(214, 195, 20);
+    box-shadow: 0 .2rem 0 rgb(117, 107, 17);
+    cursor: pointer;
+}
+
+#start-game-btn:active {
+    transform: scale(.95);
+}
+
+
+#game-board-div {
+    /* background-color: rgb(190, 190, 190); */
+    width: fit-content;
+    padding: .5rem;
+}
+
+#game-board-div:hover {
+    cursor: crosshair;
+}
+
+.square {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: rgb(230, 230, 230);
+}
+
+.square:hover {
+    opacity: 0.5;
+    cursor: crosshair;
+}
+
+.player {
+    position: absolute;
+    background-color: rgb(98, 98, 224);
+    top: 8px;
+    border-radius: 10px;
+    transition: .2s;
+}
+.player::before {
+    content: 'You';
+    position: absolute;
+    top: -15px;
+    left: -3px;
+    font-size: .7rem;
+}
+
