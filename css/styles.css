@@ -75,3 +75,32 @@ body {
     background-color: salmon;
 }
 
+/* Notifications */
+.win-div {
+    position: absolute;
+    border: none;
+    margin: auto;
+    padding: 1rem;
+    font-size: 2rem;
+    width: fit-content;
+    text-shadow: 2px 2px 0 rgb(40, 78, 45);
+    color: white;
+    background-color: rgb(23, 255, 93);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
+    transition: .3s;
+}
+
+.error-div {
+    position: absolute;
+    border: none;
+    margin: auto;
+    padding: 1rem;
+    font-size: 2rem;
+    width: fit-content;
+    background-color: rgb(23, 255, 93);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
+    transition: .3s;
+}
+
