@@ -7,7 +7,14 @@ class Game {
     }
 
     startGame() {
+        // player is able to move (handleKeydown is on)
         this.ready = true
+
+        // create board div to whom spaces (squares) will be appended
+        const gameBoardDiv = document.createElement('div')
+        gameBoardDiv.setAttribute('id', `game-board-div`)
+        document.body.appendChild(gameBoardDiv)
+
         // create board and draw it
         this.board.drawBoard()
 
@@ -25,13 +32,12 @@ class Game {
     }
 
     // Spread the virus
-    async spreadVirus() {
-        // first virus coordinates
-        let x = 29
-        let y = 0
+    spreadVirus() {
+        // first infected coordinates
+        const [x, y] = [this.board.virusStartPosition.x, this.board.virusStartPosition.y]
 
-        // update spaces, changing this.virus in each Space that has been infected
-        // if player 
+        // infecting first space and start spreading
+        this.board.spaces[y][x].virus = new Virus(x, y)
     }
 
     // Check if player reached the target
@@ -39,7 +45,33 @@ class Game {
         const [x, y] = [this.player.columnLocation, this.player.rowLocation]
 
         if (this.board.spaces[y][x].target != null) {
+
+            // unable player to move since game has ended
             this.ready = false
+
+            // hide player
+            const HTMLplayer = document.getElementById(`player-${this.playerUsername}`)
+            HTMLplayer.style.display = "none"
+
+            // notificate player about the win
+            const winDiv = document.getElementsByClassName('win-div')[0]
+            winDiv.style.top = "0px"
+
+            // hide win-div notification
+            setTimeout(() => {
+                winDiv.style.top = "-100px"
+            }, 2000)
+
+            // remove infected squares
+            const infectedSquares = document.querySelectorAll('.virus')
+            infectedSquares.forEach(square => {
+                square.remove()
+            })
+
+            // remove game board from body
+            setTimeout(() => {
+                document.getElementById('game-board-div').remove()
+            }, 1000)
         }
     }
 
@@ -50,20 +82,20 @@ class Game {
 
         const newPlayer = new Player(this.playerUsername, x, y)
 
+        // drawing HTML player
         newPlayer.drawPlayerSquare()
 
         this.player = newPlayer
 
         // setting this.player in Space
         this.board.spaces[y][x].player = true
-
-        // coloring player square
-        // const playerSquare = document.getElementById(`square-${x}-${y}`)
-        // playerSquare.style.backgroundColor = "skyblue"
     }
 
     handleKeydown(e) {
+        // unable player to move if game is not ready
         if (!this.ready) return
+
+        // moving principles
         if (e.key == "ArrowUp") {
             this.player.moveUp()
             this.checkForWin()

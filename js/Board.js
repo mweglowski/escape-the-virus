@@ -7,6 +7,8 @@ class Board {
         this.positionsOfObstacles = []
         this.targetPosition = null
         this.playerStartPosition = null
+
+        this.virusStartPosition = null
     }
 
     // creates array of spaces
@@ -54,7 +56,7 @@ class Board {
     // Draws position of target
     // Draws start position of player
     drawPositions(n) {
-        for (let i = 0; i < n + 2; i++) {
+        for (let i = 0; i < n + 3; i++) {
 
             let emptyPosition = false
 
@@ -75,6 +77,8 @@ class Board {
                         this.targetPosition = newPosition
                     } else if (i == n + 1) {
                         this.playerStartPosition = newPosition
+                    } else if (i == n + 2) {
+                        this.virusStartPosition = newPosition
                     } else {
                         this.positionsOfObstacles.push(newPosition)
                     }

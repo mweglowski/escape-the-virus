@@ -16,6 +16,7 @@ body {
     margin-top: 20vh;
     padding: 1rem 3rem;
     font-size: 2rem;
+    color: rgb(42, 42, 42);
     background-color: rgb(255, 233, 23);
     border-radius: .6rem;
     box-shadow: 0 .2rem 0 rgb(172, 157, 24);
@@ -73,15 +74,38 @@ body {
 
 .virus {
     background-color: salmon;
+    position: absolute;
+}
+
+.btn {
+    border: none;
+    margin: auto;
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: fit-content;
+    text-shadow: 2px 2px 0 rgb(40, 78, 45);
+    color: white;
+    background-color: rgb(23, 255, 93);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(19, 189, 70);
+    box-shadow: 0 .2rem 0 rgb(10, 110, 40);
 }
 
 /* Notifications */
 .win-div {
     position: absolute;
+    top: -100px;
+    left: 40%;
     border: none;
     margin: auto;
     padding: 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: fit-content;
     text-shadow: 2px 2px 0 rgb(40, 78, 45);
     color: white;
@@ -93,14 +117,25 @@ body {
 
 .error-div {
     position: absolute;
+    top: -100px;
     border: none;
     margin: auto;
     padding: 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: fit-content;
-    background-color: rgb(23, 255, 93);
+    color: rgba(255, 255, 255, 0.746);
+    background-color: rgba(255, 23, 23, 0.561);
     border-radius: .6rem;
-    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
+    box-shadow: 0 .2rem 0 rgba(160, 13, 13, 0.726);
     transition: .3s;
 }
+
+/* Controls */
+
+.controls {
+    position: absolute;
+    top: -150px;
+    justify-content: center;
+}
+
 
