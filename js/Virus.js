@@ -54,7 +54,7 @@ class Virus {
             }
 
 
-        }, 500)
+        }, 1000)
         return null
     }
 }

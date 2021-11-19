@@ -49,7 +49,7 @@ body {
     width: 15px;
     height: 15px;
     border-radius: 2px;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(82, 82, 82);
 }
 
 .square:hover {
@@ -73,8 +73,21 @@ body {
 }
 
 .virus {
-    background-color: salmon;
     position: absolute;
+    transition: 1s;
+    animation: virusBreath linear 3s infinite; 
+}
+
+@keyframes virusBreath {
+    0% {
+        background-color: rgb(50, 195, 62);
+    }
+    50% {
+        background-color: rgb(29, 105, 34);
+    }
+    100% {
+        background-color: rgb(50, 195, 62);
+    }
 }
 
 .btn {
