@@ -37,7 +37,6 @@ class Board {
     // draws board in browser HTML
     drawBoard() {
         const gameBoardDiv = document.getElementById('game-board-div')
-        gameBoardDiv.style.display = "block"
 
         for (let y = 0; y < this.spaces.length; y++) {
             let row = document.createElement('div')

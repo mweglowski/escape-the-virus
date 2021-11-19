@@ -29,7 +29,9 @@ class Virus {
 
             if (topSpace.virus === null && topSpace.obstacle === null) {
                 topSpace.virus = new Virus(this.x, this.y - 1)
-                console.log('square above infected')
+                if (topSpace.player == true) {
+                    game.checkForWinOrDefeat()
+                }
             }
 
             // right
@@ -37,6 +39,9 @@ class Virus {
 
             if (rightSpace.virus === null && rightSpace.obstacle === null) {
                 rightSpace.virus = new Virus(this.x + 1, this.y)
+                if (rightSpace.player == true) {
+                    game.checkForWinOrDefeat()
+                }
             }
 
             // bottom
@@ -44,6 +49,9 @@ class Virus {
 
             if (bottomSpace.virus === null && bottomSpace.obstacle === null) {
                 bottomSpace.virus = new Virus(this.x, this.y + 1)
+                if (bottomSpace.player == true) {
+                    game.checkForWinOrDefeat()
+                }
             }
 
             // left
@@ -51,10 +59,13 @@ class Virus {
 
             if (leftSpace.virus === null && leftSpace.obstacle === null) {
                 leftSpace.virus = new Virus(this.x - 1, this.y)
+                if (leftSpace.player == true) {
+                    game.checkForWinOrDefeat()
+                }
             }
 
 
-        }, 1000)
+        }, 700)
         return null
     }
 }

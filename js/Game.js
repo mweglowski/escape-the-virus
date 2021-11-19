@@ -40,38 +40,88 @@ class Game {
         this.board.spaces[y][x].virus = new Virus(x, y)
     }
 
+    // Remove board and every element that belong to it
+    clearBody() {
+        // remove infected squares
+        const infectedSquares = document.querySelectorAll('.virus')
+        infectedSquares.forEach(square => {
+            square.remove()
+        })
+
+        const gameBoardDiv = document.getElementById('game-board-div')
+        gameBoardDiv.classList.add('hide')
+
+        // remove game board from body
+        setTimeout(() => {
+            gameBoardDiv.remove()
+        }, 2000)
+    }
+
+    // Show win notification
+    showWin() {
+        // hide player
+        const HTMLplayer = document.getElementById(`player-${this.playerUsername}`)
+        HTMLplayer.style.display = "none"
+
+        // notificate player about the win
+        const winDiv = document.getElementsByClassName('win-div')[0]
+        winDiv.style.top = "0px"
+
+        // hide win-div notification
+        setTimeout(() => {
+            winDiv.style.top = "-100px"
+        }, 2000)
+
+        this.clearBody()
+    }
+
+    // Show defeat notification
+    showDefeat() {
+        const defeatDiv = document.querySelector('.defeat-div')
+        defeatDiv.style.top = "0px"
+
+        // hide defeat notification
+        setTimeout(() => {
+            defeatDiv.style.top = "-100px"
+        }, 2000)
+
+        this.clearBody()
+    }
+
     // Check if player reached the target
-    checkForWin() {
+    checkForWinOrDefeat() {
         const [x, y] = [this.player.columnLocation, this.player.rowLocation]
 
-        if (this.board.spaces[y][x].target != null) {
-
+        const playerLocationSpace = this.board.spaces[y][x]
+        
+        // Check if player reached the target, if yes show win notification
+        if (playerLocationSpace.target != null) {
             // unable player to move since game has ended
             this.ready = false
+            
+            // check if target space is infected
+            if (playerLocationSpace.virus != null) {
+                this.showDefeat()
+                return
+            } else {
+                this.showWin()
+                return
+            }
+        }
 
-            // hide player
-            const HTMLplayer = document.getElementById(`player-${this.playerUsername}`)
-            HTMLplayer.style.display = "none"
-
-            // notificate player about the win
-            const winDiv = document.getElementsByClassName('win-div')[0]
-            winDiv.style.top = "0px"
-
-            // hide win-div notification
-            setTimeout(() => {
-                winDiv.style.top = "-100px"
-            }, 2000)
-
-            // remove infected squares
-            const infectedSquares = document.querySelectorAll('.virus')
-            infectedSquares.forEach(square => {
-                square.remove()
-            })
-
-            // remove game board from body
-            setTimeout(() => {
-                document.getElementById('game-board-div').remove()
-            }, 1000)
+        // Check if player has been infected, if yes show defeat notification
+        if (playerLocationSpace.virus != null) {
+            // unable player to move
+            this.ready = false
+            
+            // check if in infected place currently is either player and target
+            if (playerLocationSpace.target != null && playerLocationSpace.player == true) {
+                this.showWin()
+                return
+            } else {
+                this.showDefeat()
+                return
+            }
         }
     }
 
@@ -87,10 +137,11 @@ class Game {
 
         this.player = newPlayer
 
-        // setting this.player in Space
+        // placing player in specific Space
         this.board.spaces[y][x].player = true
     }
 
+    // Listen to key downs
     handleKeydown(e) {
         // unable player to move if game is not ready
         if (!this.ready) return
@@ -98,19 +149,19 @@ class Game {
         // moving principles
         if (e.key == "ArrowUp") {
             this.player.moveUp()
-            this.checkForWin()
+            this.checkForWinOrDefeat()
         } 
         if (e.key == "ArrowRight") {
             this.player.moveRight()
-            this.checkForWin()
+            this.checkForWinOrDefeat()
         }
         if (e.key == "ArrowDown") {
             this.player.moveDown()
-            this.checkForWin()
+            this.checkForWinOrDefeat()
         } 
         if (e.key == "ArrowLeft") {
             this.player.moveLeft()
-            this.checkForWin()
+            this.checkForWinOrDefeat()
         }
     }
 }

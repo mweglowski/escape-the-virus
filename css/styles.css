@@ -75,7 +75,7 @@ body {
 .virus {
     position: absolute;
     transition: 1s;
-    animation: virusBreath linear 3s infinite; 
+    animation: virusBreath linear 5s infinite; 
 }
 
 @keyframes virusBreath {
@@ -128,6 +128,23 @@ body {
     transition: .3s;
 }
 
+.defeat-div {
+    position: absolute;
+    top: -100px;
+    left: 40%;
+    border: none;
+    margin: auto;
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: fit-content;
+    text-shadow: 2px 2px 0 rgb(40, 78, 45);
+    color: white;
+    background-color: rgb(255, 58, 23);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem 0 rgb(179, 41, 16);
+    transition: .3s;
+}
+
 .error-div {
     position: absolute;
     top: -100px;
@@ -152,3 +169,8 @@ body {
 }
 
 
+/* Temporary Classes */
+
+.hide {
+    display: none;
+}
