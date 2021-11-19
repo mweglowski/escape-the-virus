@@ -31,6 +31,34 @@ class Game {
         this.spreadVirus()
     }
 
+    // Create new game
+    playAgain() {
+        const questionDiv = document.querySelector('.next-game-div')
+
+        setTimeout(() => {
+            questionDiv.style.top = "100px"
+        }, 2000)
+
+        const yesControl = document.querySelector('.control-btn-yes')
+        yesControl.addEventListener('click', () => {
+            
+            this.clearBody()
+
+            game = new Game()
+
+            game.startGame()
+
+            questionDiv.style.top = "-200px"
+        })
+
+        const noControl = document.querySelector('.control-btn-no')
+        noControl.addEventListener('click', () => {
+            this.clearBody()
+
+            questionDiv.style.top = "-200px"
+        })
+    }
+
     // Spread the virus
     spreadVirus() {
         // first infected coordinates
@@ -49,12 +77,9 @@ class Game {
         })
 
         const gameBoardDiv = document.getElementById('game-board-div')
-        gameBoardDiv.classList.add('hide')
 
         // remove game board from body
-        setTimeout(() => {
-            gameBoardDiv.remove()
-        }, 2000)
+        gameBoardDiv.remove()
     }
 
     // Show win notification
@@ -71,8 +96,6 @@ class Game {
         setTimeout(() => {
             winDiv.style.top = "-100px"
         }, 2000)
-
-        this.clearBody()
     }
 
     // Show defeat notification
@@ -84,8 +107,6 @@ class Game {
         setTimeout(() => {
             defeatDiv.style.top = "-100px"
         }, 2000)
-
-        this.clearBody()
     }
 
     // Check if player reached the target
@@ -95,31 +116,35 @@ class Game {
         const playerLocationSpace = this.board.spaces[y][x]
         
         // Check if player reached the target, if yes show win notification
-        if (playerLocationSpace.target != null) {
+        if (playerLocationSpace.target != null && this.ready) {
             // unable player to move since game has ended
             this.ready = false
             
             // check if target space is infected
             if (playerLocationSpace.virus != null) {
                 this.showDefeat()
+                this.playAgain()
                 return
             } else {
                 this.showWin()
+                this.playAgain()
                 return
             }
         }
 
         // Check if player has been infected, if yes show defeat notification
-        if (playerLocationSpace.virus != null) {
+        if (playerLocationSpace.virus != null && this.ready) {
             // unable player to move
             this.ready = false
             
             // check if in infected place currently is either player and target
             if (playerLocationSpace.target != null && playerLocationSpace.player == true) {
                 this.showWin()
+                this.playAgain()
                 return
             } else {
                 this.showDefeat()
+                this.playAgain()
                 return
             }
         }

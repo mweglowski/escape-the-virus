@@ -42,7 +42,6 @@ class Player {
         playerSquare.style.left = `${8 + this.columnLocation * 15}px`
         
         document.getElementById('game-board-div').appendChild(playerSquare)
-        console.log(this.x, this.y)
     }
 
     checkIfThereIsObstacle(x, y) {
@@ -67,8 +66,6 @@ class Player {
         } else {
             console.log('You can not go through obstacle/border!')
         }
-
-        console.log(this.columnLocation, this.rowLocation)
     }
 
     moveRight() {
@@ -90,8 +87,6 @@ class Player {
         } else {
             console.log('You can not go through obstacle/border!')
         }
-
-        console.log(this.columnLocation, this.rowLocation)
     }
 
     moveDown() {
@@ -113,8 +108,6 @@ class Player {
         } else {
             console.log('You can not go through obstacle/border!')
         }
-
-        console.log(this.columnLocation, this.rowLocation)
     }
 
     moveLeft() {
@@ -135,8 +128,6 @@ class Player {
         } else {
             console.log('You can not go through obstacle/border!')
         }
-
-        console.log(this.columnLocation, this.rowLocation)
     }
 
 }

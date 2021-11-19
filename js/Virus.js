@@ -21,7 +21,6 @@ class Virus {
         document.body.appendChild(virus)
 
         setTimeout(() => {
-            console.log('Virus started to spread!')
 
             // spread to the next squares
             // top

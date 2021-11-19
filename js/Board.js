@@ -54,6 +54,7 @@ class Board {
     // Draws n positions of obstacles 
     // Draws position of target
     // Draws start position of player
+    // Draws position of virus spread start
     drawPositions(n) {
         for (let i = 0; i < n + 3; i++) {
 

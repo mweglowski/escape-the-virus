@@ -95,23 +95,21 @@ body {
     margin: auto;
     padding: 1rem;
     font-size: 1.5rem;
-    width: fit-content;
-    text-shadow: 2px 2px 0 rgb(40, 78, 45);
     color: white;
-    background-color: rgb(23, 255, 93);
     border-radius: .6rem;
-    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
     transition: .3s;
     cursor: pointer;
+    text-shadow: 0 0 3px black
 }
-
 .btn:hover {
-    background-color: rgb(19, 189, 70);
-    box-shadow: 0 .2rem 0 rgb(10, 110, 40);
+    opacity: .7;
+}
+.btn:active {
+    transform: scale(.95)
 }
 
 /* Notifications */
-.win-div {
+.notification {
     position: absolute;
     top: -100px;
     left: 40%;
@@ -120,29 +118,22 @@ body {
     padding: 1rem;
     font-size: 1.5rem;
     width: fit-content;
-    text-shadow: 2px 2px 0 rgb(40, 78, 45);
     color: white;
-    background-color: rgb(23, 255, 93);
     border-radius: .6rem;
-    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
     transition: .3s;
+    z-index: 10;
+}
+
+.win-div {
+    text-shadow: 2px 2px 0 rgb(54, 54, 54);
+    background-color: rgb(23, 255, 93);
+    box-shadow: 0 .2rem 0 rgb(14, 156, 57);
 }
 
 .defeat-div {
-    position: absolute;
-    top: -100px;
-    left: 40%;
-    border: none;
-    margin: auto;
-    padding: 1rem;
-    font-size: 1.5rem;
-    width: fit-content;
-    text-shadow: 2px 2px 0 rgb(40, 78, 45);
-    color: white;
+    text-shadow: 2px 2px 0 rgb(54, 54, 54);
     background-color: rgb(255, 58, 23);
-    border-radius: .6rem;
     box-shadow: 0 .2rem 0 rgb(179, 41, 16);
-    transition: .3s;
 }
 
 .error-div {
@@ -160,12 +151,51 @@ body {
     transition: .3s;
 }
 
-/* Controls */
+/* Next Game Div */
+.next-game-div {
+    position: absolute;
+    top: -200px;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 .3rem black;
+    background-color: rgb(61, 61, 61);
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 3px 0 rgb(46, 46, 46);
+    transition: 1s ease-out;
+    z-index: 5;
+}
+
+.question {
+    font-size: 1.7rem;
+}
 
 .controls {
-    position: absolute;
-    top: -150px;
-    justify-content: center;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.control-btn {
+    padding: .5rem;
+    width: 100px;
+}
+
+.control-btn-yes {
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0 3px 0 rgb(28, 177, 47);
+}
+.control-btn-yes:hover {
+    color: rgb(32, 218, 56);
+}
+
+.control-btn-no {
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0 3px 0 rgb(160, 41, 41);
+}
+.control-btn-no:hover {
+    color: rgb(235, 36, 36);
 }
 
 
