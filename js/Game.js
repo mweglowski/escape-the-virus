@@ -42,7 +42,7 @@ class Game {
         const yesControl = document.querySelector('.control-btn-yes')
         yesControl.addEventListener('click', () => {
             
-            this.clearBody()
+            game.clearBody()
 
             game = new Game()
 
@@ -53,7 +53,7 @@ class Game {
 
         const noControl = document.querySelector('.control-btn-no')
         noControl.addEventListener('click', () => {
-            this.clearBody()
+            game.clearBody()
 
             questionDiv.style.top = "-200px"
         })
@@ -70,11 +70,6 @@ class Game {
 
     // Remove board and every element that belong to it
     clearBody() {
-        // remove infected squares
-        const infectedSquares = document.querySelectorAll('.virus')
-        infectedSquares.forEach(square => {
-            square.remove()
-        })
 
         const gameBoardDiv = document.getElementById('game-board-div')
 
@@ -138,7 +133,7 @@ class Game {
             this.ready = false
             
             // check if in infected place currently is either player and target
-            if (playerLocationSpace.target != null && playerLocationSpace.player == true) {
+            if (playerLocationSpace.target != null) {
                 this.showWin()
                 this.playAgain()
                 return

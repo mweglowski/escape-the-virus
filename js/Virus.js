@@ -7,6 +7,10 @@ class Virus {
         this.startInfection = this.keepSpreading()
     }
 
+    get gameBoardDiv() {
+        return document.getElementById('game-board-div')
+    }
+
     keepSpreading() {
         // draw HTML virus
         if (!game.ready) return
@@ -18,7 +22,8 @@ class Virus {
         virus.style.left = `${8 + this.x * 15}px`
         virus.style.top = `${8 + this.y * 15}px`
 
-        document.body.appendChild(virus)
+        this.gameBoardDiv.appendChild(virus)
+        console.log(this.x, this.y)
 
         setTimeout(() => {
 
@@ -64,7 +69,7 @@ class Virus {
             }
 
 
-        }, 700)
+        }, 2000)
         return null
     }
 }

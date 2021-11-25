@@ -1,5 +1,4 @@
 const startButton = document.getElementById('start-game-btn')
-const gameBoardDiv = document.getElementById('game-board-div')
 
 let game = null
 
@@ -25,7 +24,6 @@ window.addEventListener('keydown', (e) => {
 
 window.addEventListener('keydown', (e) => {
     game.handleKeydown(e)
-    console.log(e.key)
 })
 
 
