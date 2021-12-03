@@ -69,7 +69,7 @@ class Virus {
             }
 
 
-        }, 2000)
+        }, 700)
         return null
     }
 }
